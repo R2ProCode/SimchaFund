@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="SimchaFund.Data/SimchaFund.Data.csproj" />
+  <Project Path="SimchaFund.Web/SimchaFund.Web.csproj" />
+</Solution>
