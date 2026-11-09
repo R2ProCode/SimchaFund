@@ -71,11 +71,11 @@
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label class="form-label">First Name</label>
-							<input class="form-control" id="contributor_first_name" name="firstName" placeholder="First Name" type="text">
+							<input class="form-control" id="contributor_first_name" name="firstName" placeholder="First Name" type="text" required>
 						</div>
 						<div class="form-group col-md-6">
 							<label class="form-label">Last Name</label>
-							<input class="form-control" id="contributor_last_name" name="lastName" placeholder="Last Name" type="text">
+							<input class="form-control" id="contributor_last_name" name="lastName" placeholder="Last Name" type="text" required>
 						</div>
 					</div>
 					<div class="row mt-3">
@@ -85,16 +85,17 @@
 						</div>
 						<div class="form-group col-md-6" id="initialDepositDiv">
 							<label class="form-label">Initial Deposit</label>
-							<input type="text" class="form-control" name="initialDeposit" placeholder="Initial Deposit">
+							<input type="number" step="0.01" class="form-control" name="initialDeposit" placeholder="Initial Deposit">
 						</div>
 					</div>
-					<div class="row mt-3">
+					<div class="row mt-3 align-items-end">
 						<div class="form-group col-md-6">
 							<label class="form-label">Created Date</label>
-							<input class="form-control" id="contributor_created_at" name="date" placeholder="Date" type="date">
+							<input class="form-control" id="contributor_created_at" name="date" type="date">
 						</div>
-						<div>
-							<div class="form-check mt-3 ml-3">
+						
+						<div class="col-md-6 pb-2">
+							<div class="form-check ms-3">
 								<input type="checkbox" class="form-check-input" id="contributor_always_include" name="alwaysInclude" value="true">
 								<label class="form-check-label" for="contributor_always_include">Always Include</label>
 							</div>
@@ -103,7 +104,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					<button class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-primary">Save</button>
 				</div>
 			</form>
 		</div>
@@ -119,28 +120,30 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<form method="post" action="/contributors/edit">
-				<input type="hidden" id="edit_id" name="id" value="" />
+				
+				<input type="hidden" id="edit_id" name="contributorId" value="" />
+
 				<div class="modal-body">
 					<div class="row">
 						<div class="form-group col-md-6">
 							<label class="form-label">First Name</label>
-							<input class="form-control" id="edit-contributor_first_name" name="firstName" placeholder="First Name" type="text">
+							<input class="form-control" id="edit-contributor_first_name" name="firstName" placeholder="First Name" type="text" required>
 						</div>
 						<div class="form-group col-md-6">
 							<label class="form-label">Last Name</label>
-							<input class="form-control" id="edit-contributor_last_name" name="lastName" placeholder="Last Name" type="text">
+							<input class="form-control" id="edit-contributor_last_name" name="lastName" placeholder="Last Name" type="text" required>
 						</div>
 					</div>
-					<div class="row mt-3">
+					<div class="row mt-3 align-items-end">
 						<div class="form-group col-md-6">
 							<label class="form-label">Cell Number</label>
 							<input class="form-control" id="edit-contributor_cell_number" name="cellNumber" placeholder="Cell Number" type="text">
 						</div>
-					</div>
-					<div class="row mt-3">
-						<div>
-							<div class="form-check mt-3 ml-3">
-								<input type="checkbox" class="form-check-input" id="edit-contributor_always_include" name="alwaysInclude" value="true" checked>
+						
+						<div class="col-md-6 pb-2">
+							
+							<div class="form-check ms-3">
+								<input type="checkbox" class="form-check-input" id="edit-contributor_always_include" name="alwaysInclude" value="true">
 								<label class="form-check-label" for="edit-contributor_always_include">Always Include</label>
 							</div>
 						</div>
@@ -148,7 +151,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					<button class="btn btn-primary">Update</button>
+					<button type="submit" class="btn btn-primary">Update</button>
 				</div>
 			</form>
 		</div>

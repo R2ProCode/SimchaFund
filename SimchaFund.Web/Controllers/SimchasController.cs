@@ -45,6 +45,7 @@ namespace SimchaFund.Web.Controllers
         public IActionResult UpdateContributions(int simchaId, List<Contributor> contributors)
         {
             SimchaFundRepository repository = new SimchaFundRepository(_connectionString);
+            //contributors.Select(c => c.Include);
             repository.UpdateContributionsForSimcha(simchaId, contributors);
             TempData["message"] = "Contributions updated successfully!";
             return Redirect("/simchas/index");

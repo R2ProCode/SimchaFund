@@ -71,14 +71,11 @@ namespace SimchaFund.Data
             using var connection = new SqlConnection(_connectionString);
             using var command = connection.CreateCommand();
 
-            //get contributors from that func, then get their balance from the other func, then add that to the list of contributions 
-            //get contributors and then for each get their balance and add that to the list of contributions
-
             command.CommandText = @"SELECT Amount FROM Contributions c
                                     WHERE c.SimchaId = @simchaId AND c.ContributorId = @contributorId";
             command.Parameters.AddWithValue("@simchaId", simchaId);
             command.Parameters.AddWithValue("@contributorId", contributorId);
-            //need to get ALL contributors;
+            
             connection.Open();
             var reader = command.ExecuteReader();
             decimal amount = 0;
@@ -98,7 +95,7 @@ namespace SimchaFund.Data
             command.Parameters.AddWithValue("@name", simcha.Name);
             command.Parameters.AddWithValue("@date", simcha.Date);
             connection.Open();
-            //command.ExecuteNonQuery();
+            
             simcha.Id = (int)(decimal)command.ExecuteScalar();
 
             foreach (var contributor in GetContributors())
