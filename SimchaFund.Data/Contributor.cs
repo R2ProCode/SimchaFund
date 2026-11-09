@@ -15,5 +15,8 @@ namespace SimchaFund.Data
         public DateTime Date { get; set; }
         public bool AlwaysInclude { get; set; }
         public decimal? Balance { get; set; }
+
+        //public bool? Include { get; set; }
+        //public decimal? Amount { get; set; }
     }
 }

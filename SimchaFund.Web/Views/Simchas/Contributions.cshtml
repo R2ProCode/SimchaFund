@@ -19,33 +19,37 @@
             </tr>
 			@foreach (var contributor in Model.Contributions)
 			{
-				<tr>
-					<td>
-						<input type="hidden" name="contributions[0].ContributorId" value="@contributor.ContributorId" />
+				<tr class="contribution-row simcha-id" name="contribution[0].SimchaId">
+					<td class="contributor-id">
+						<input type="hidden" name="contributors[0].Id" value="@contributor." />
 						<div class="d-flex justify-content-center">
 							<div class="form-check form-switch">
-								<input style="width: 4rem; height: 2rem;" @* name="contributors[0].Include" *@ class="form-check-input" type="checkbox" value="true" checked @* @(contributor.Amount.HasValue ? "checked" : "") *@>
+								<input style="width: 4rem; height: 2rem;" @* name="contributors[0].Include" *@ class="form-check-input" type="checkbox" value="true" @(contributor.Amount != 0 ? "checked" : "") >
 							</div>
 						</div>
 					</td>
 					<td>@contributor.ContributorName</td>
 					<td>@contributor.Balance.Value.ToString("C")</td>
 					<td @* name="contributors[0].AlwaysInclude" *@ style="text-align: center;">
-						@if (contributor.AlwaysInclude.Value)
+						@if (contributor.AlwaysInclude)
 						{
 							<i style="font-size:30px" class="bi bi-check"></i>
 						}
 					</td>
 					<td>
-						<input type="text" name="contributions[0].Amount" class="form-control amount" value="@(contributor.Amount > 0 ? contributor.Amount.ToString("C") : "5")" />
+						<input type="text" name="contributions[0].Amount" class="form-control amount" value="@(contributor.Amount > 0 ? contributor.Amount.ToString("0.00") : "5.00")" />
 						@*@(contributor.Amount.HasValue ? contributor.Amount.ToString("C") : "5"*@
 					</td>
 				</tr>
 			}
         </table>
         <div style="text-align:center;">
-            <button class="btn-lg btn-danger">Update</button>
+            <button class="btn btn-lg btn-danger">Update</button>
         </div>
     </form>
 </div>
 
+@section Scripts
+{
+	<script src="/js/simcha-contributions.js"></script>
+}

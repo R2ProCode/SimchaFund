@@ -42,12 +42,9 @@
         const lastName = $(this).data("lastName");
         const cell = $(this).data("cell");
         const alwaysInclude = $(this).data("alwaysInclude");
+
         console.log("What jQuery sees:", $(this).data());
 
-        //form.attr("action", "/contributors/edit");
-        //form.find("#edit-id").remove();
-        
-        //$("#initialDepositDiv").hide();
         $("#edit_id").val(id);
         $("#edit-contributor_first_name").val(firstName);
         $("#edit-contributor_last_name").val(lastName);

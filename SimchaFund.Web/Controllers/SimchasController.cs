@@ -29,21 +29,21 @@ namespace SimchaFund.Web.Controllers
         {
             SimchaFundRepository repository = new SimchaFundRepository(_connectionString);
             var contributions = repository.GetContributorsForSimcha(simchaId);
-            
+
             contributions.ForEach(c => c.Balance = repository.GetContributorBalance(c.ContributorId));
 
             return View(new SimchaContributionsViewModel
             {
                 Contributions = contributions,
-                SimchaName = repository.GetSimchaNameById(simchaId)
+                SimchaName = repository.GetSimchaNameById(simchaId), 
             });
         }
 
         [HttpPost]
-        public IActionResult UpdateContributions(int simchaId, List<Contribution> contributions)
+        public IActionResult UpdateContributions(List<Contribution> contributions)
         {
             SimchaFundRepository repository = new SimchaFundRepository(_connectionString);
-            repository.UpdateContributionsForSimcha(simchaId, contributions);
+            repository.UpdateContributionsForSimcha(contributions);
             TempData["message"] = "Contributions updated successfully!";
             return Redirect("/simchas/index");
         }
