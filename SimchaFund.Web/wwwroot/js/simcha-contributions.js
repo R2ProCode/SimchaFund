@@ -6,7 +6,7 @@ $(() => {
         recalculateIndices();
     })
 
-    //let num = 1;
+    
     function recalculateIndices() {
         let newIndex = 0;
         $(".contribution-row").each(function () {
@@ -20,6 +20,5 @@ $(() => {
                 newIndex++;
             } 
         })
-        //num = newIndex;
     }
 });
