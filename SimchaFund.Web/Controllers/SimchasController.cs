@@ -30,8 +30,8 @@ namespace SimchaFund.Web.Controllers
             SimchaFundRepository repository = new SimchaFundRepository(_connectionString);
             var contributors = repository.GetContributors();
 
-            contributors.ForEach(c => c.Balance = repository.GetContributorBalance(c.Id));
-            contributors.ForEach(c => c.Amount = repository.GetContributionForSimcha(simchaId, c.Id));
+            contributors.ForEach(c => c.Balance = repository.GetContributorBalance(c.ContributorId));
+            contributors.ForEach(c => c.Amount = repository.GetContributionForSimcha(simchaId, c.ContributorId));
 
             return View(new SimchaContributionsViewModel
             {   

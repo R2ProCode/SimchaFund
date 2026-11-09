@@ -37,7 +37,7 @@
 			{
 				<tr>
 					<td>
-						<button class="btn btn-success deposit-button" data-id="@contributor.Id">Deposit</button>
+						<button class="btn btn-success deposit-button" data-id="@contributor.ContributorId">Deposit</button>
 					</td>
 					<td>@(contributor.FirstName + " " + contributor.LastName)</td>
 					<td>@contributor.CellNumber</td>
@@ -46,9 +46,9 @@
 						<i style="font-size:30px" class="@(contributor.AlwaysInclude ? "bi bi-check" : "")"></i>
 					</td>
 					<td>
-						<a href="/contributors/history?contributorId=@contributor.Id" class="btn btn-primary">Show History</a>
+						<a href="/contributors/history?contributorId=@contributor.ContributorId" class="btn btn-primary">Show History</a>
 						<button data-first-name="@contributor.FirstName" data-last-name="@contributor.LastName"
-								data-cell="@contributor.CellNumber" data-id="@contributor.Id" data-always-include="@contributor.AlwaysInclude" data-date="@contributor.Date"
+								data-cell="@contributor.CellNumber" data-id="@contributor.ContributorId" data-always-include="@contributor.AlwaysInclude" data-date="@contributor.Date"
 								class="btn btn-danger edit-contributor">
 							Edit
 						</button>

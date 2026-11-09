@@ -55,7 +55,7 @@ namespace SimchaFund.Data
             {
                 contributors.Add(new Contributor
                 {
-                    Id = (int)reader["Id"],
+                    ContributorId = (int)reader["Id"],
                     FirstName = (string)reader["FirstName"],
                     LastName = (string)reader["LastName"],
                     CellNumber = (string)reader["CellNumber"],
@@ -105,7 +105,7 @@ namespace SimchaFund.Data
             {
                 if (contributor.AlwaysInclude)
                 {
-                    AddContributionForSimcha(simcha.Id, contributor.Id, 5);
+                    AddContributionForSimcha(simcha.Id, contributor.ContributorId, 5);
                 }
             }
         }
@@ -171,7 +171,7 @@ namespace SimchaFund.Data
             command.Parameters.AddWithValue("@lastName", contributor.LastName);
             command.Parameters.AddWithValue("@cellNumber", contributor.CellNumber);
             command.Parameters.AddWithValue("@alwaysInclude", contributor.AlwaysInclude);
-            command.Parameters.AddWithValue("@id", contributor.Id);
+            command.Parameters.AddWithValue("@id", contributor.ContributorId);
             command.ExecuteNonQuery();
         }
 
@@ -187,7 +187,7 @@ namespace SimchaFund.Data
 
             foreach (var contributor in contributors)
             {
-                AddContributionForSimcha(simchaId, contributor.Id, contributor.Amount.Value);
+                AddContributionForSimcha(simchaId, contributor.ContributorId, contributor.Amount.Value);
             }
         }
 

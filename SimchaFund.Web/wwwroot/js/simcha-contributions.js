@@ -1,8 +1,7 @@
 $(() => {
 
     $("form").on('submit', function () {
-
-        console.log("What jQuery sees:", $(this).data());
+        //console.log("What jQuery sees:", $(this).data());
         recalculateIndices();
     })
 
