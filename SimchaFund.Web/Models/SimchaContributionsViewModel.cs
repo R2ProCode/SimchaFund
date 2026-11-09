@@ -4,8 +4,8 @@ namespace SimchaFund.Web.Models
 {
     public class SimchaContributionsViewModel
     {
-        public List<Contribution> Contributions { get; set; }
+        public List<Contributor> Contributors { get; set; }
         public string SimchaName { get; set; }
-        //public int SimchaId { get; set; }
+        public int SimchaId { get; set; }
     }
 }

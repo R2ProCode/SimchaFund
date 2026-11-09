@@ -12,8 +12,5 @@ namespace SimchaFund.Data
         public int SimchaId { get; set; }
         public int ContributorId { get; set; }
         public decimal Amount { get; set; }
-        public decimal? Balance { get; set; }
-        public string ContributorName { get; set; }
-        public bool AlwaysInclude { get; set; }
     }
 }

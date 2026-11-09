@@ -28,22 +28,24 @@ namespace SimchaFund.Web.Controllers
         public IActionResult Contributions(int simchaId)
         {
             SimchaFundRepository repository = new SimchaFundRepository(_connectionString);
-            var contributions = repository.GetContributorsForSimcha(simchaId);
+            var contributors = repository.GetContributors();
 
-            contributions.ForEach(c => c.Balance = repository.GetContributorBalance(c.ContributorId));
+            contributors.ForEach(c => c.Balance = repository.GetContributorBalance(c.Id));
+            contributors.ForEach(c => c.Amount = repository.GetContributionForSimcha(simchaId, c.Id));
 
             return View(new SimchaContributionsViewModel
-            {
-                Contributions = contributions,
-                SimchaName = repository.GetSimchaNameById(simchaId), 
+            {   
+                Contributors = contributors,
+                SimchaName = repository.GetSimchaNameById(simchaId),
+                SimchaId = simchaId,
             });
         }
 
         [HttpPost]
-        public IActionResult UpdateContributions(List<Contribution> contributions)
+        public IActionResult UpdateContributions(int simchaId, List<Contributor> contributors)
         {
             SimchaFundRepository repository = new SimchaFundRepository(_connectionString);
-            repository.UpdateContributionsForSimcha(contributions);
+            repository.UpdateContributionsForSimcha(simchaId, contributors);
             TempData["message"] = "Contributions updated successfully!";
             return Redirect("/simchas/index");
         }
