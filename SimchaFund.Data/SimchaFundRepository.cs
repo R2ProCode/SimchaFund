@@ -176,7 +176,7 @@ namespace SimchaFund.Data
         }
 
         public void UpdateContributionsForSimcha(int simchaId, List<Contributor> contributors)
-            {
+                {
             using var connection = new SqlConnection(_connectionString);
             using var command = connection.CreateCommand();
             command.CommandText = "DELETE FROM Contributions WHERE SimchaId = @simchaId";
